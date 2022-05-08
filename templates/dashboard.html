@@ -17,10 +17,10 @@
     <div class="col-md">
       <div class="card text-center text-black mb-3" id="appointments-doctor">
         <div class="card-header">
-          <h5 class="card-title">Consultas Marcadas (Médico)</h5>
+          <h5 class="card-title">Total de Consultas</h5>
         </div>
         <div class="card-body">
-          <h3 class="card-title">3</h3>
+          <h3 class="card-title">{{ total_orders }}</h3>
         </div>
       </div>
     </div>
@@ -30,10 +30,10 @@
     <div class="col-md">
       <div class="card text-center text-black mb-3" id="appointments-lawyer">
         <div class="card-header">
-          <h5 class="card-title">Consultas Marcadas (Advogado)</h5>
+          <h5 class="card-title">Pagamentos Realizados</h5>
         </div>
         <div class="card-body">
-          <h3 class="card-title">7</h3>
+          <h3 class="card-title">{{ payed_orders}}</h3>
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@
     <h4>CLIENTES</h4>
     <div class="card card-body">
       <a class="btn btn-primary btn-sm btn-block" href="/cliente/create"
-        >Create Customer</a
+        >Ver Todos</a
       >
       <table class="table table-sm">
         <thead>
@@ -77,7 +77,7 @@
     <hr />
     <h4>PRÓXIMAS CONSULTAS:</h4>
     <div class="card card-body">
-      <a class="btn btn-primary btn-sm btn-block" href="">Create Order</a>
+      <a class="btn btn-primary btn-sm btn-block" href="">Ver Todos</a>
       <table class="table table-sm">
         <thead>
           <tr>
@@ -103,8 +103,8 @@
             {% else %}
             <td>Pago</td>
             {% endif %}
-            <td><a class="btn btn-sm btn-warning" href="">Update</a></td>
-            <td><a class="btn btn-sm btn-danger" href="">Cancel</a></td>
+            <td><a class="btn btn-sm btn-warning" href="">Atualizar</a></td>
+            <td><a class="btn btn-sm btn-danger" href="">Cancelar</a></td>
           </tr>
           {% endfor %}
         </tbody>

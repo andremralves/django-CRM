@@ -17,10 +17,12 @@ def dashboard(request):
     orders = Order.objects.all()[0:5]
     total_customers = customers.count()
     total_orders = orders.count()
+    payed_orders = Order.objects.filter(payment_status="Done").count()
     context = {
         "customers": customers,
         "total_customers": total_customers,
         "total_orders": total_orders,
+        "payed_orders": payed_orders,
         "orders": orders,
     }
     return render(request, "dashboard.html", context)
@@ -29,8 +31,10 @@ def dashboard(request):
 @login_required(login_url="login")
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
-    print(customer)
-    context = {"customer": customer}
+    customer_orders = Order.objects.filter(customer_id=customer)
+    print(customer_orders.all())
+    # print(customer)
+    context = {"customer": customer, "customer_orders": customer_orders}
     return render(request, "customer.html", context)
 
 

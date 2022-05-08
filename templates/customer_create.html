@@ -1,0 +1,32 @@
+{% extends "main_template.html" %} {% block content %}
+<div class="row justify-content-md-center mt-3">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body">
+        <form action="/customer/create" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Whatsapp</label>
+            <input type="password" class="form-control" id="phone" />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

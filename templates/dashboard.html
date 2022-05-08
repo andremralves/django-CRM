@@ -1,0 +1,115 @@
+{% extends "main_template.html" %} {% block content %}
+<!-- Top cards -->
+<div class="row mt-5">
+  <div class="col">
+    <div class="col-md">
+      <div class="card text-center text-black mb-3" id="total-orders">
+        <div class="card-header">
+          <h5 class="card-title">Clientes</h5>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ total_customers }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="col-md">
+      <div class="card text-center text-black mb-3" id="appointments-doctor">
+        <div class="card-header">
+          <h5 class="card-title">Consultas Marcadas (Médico)</h5>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">3</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="col-md">
+      <div class="card text-center text-black mb-3" id="appointments-lawyer">
+        <div class="card-header">
+          <h5 class="card-title">Consultas Marcadas (Advogado)</h5>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">7</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-5">
+    <hr />
+    <h4>CLIENTES</h4>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="/cliente/create"
+        >Create Customer</a
+      >
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Customer</th>
+            <th>Whatsapp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for customer in customers %}
+          <tr>
+            <td>
+              <a href="/cliente/{{ customer.id }}" class="btn btn-sm btn-info"
+                >Detalhes</a
+              >
+            </td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.phone }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-7">
+    <hr />
+    <h4>PRÓXIMAS CONSULTAS:</h4>
+    <div class="card card-body">
+      <a class="btn btn-primary btn-sm btn-block" href="">Create Order</a>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Categoria</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{ order.customer_id }}</td>
+            <td>{{ order.service_id }}</td>
+            {% if order.service_id.category == "Doctor" %}
+            <td>Médico</td>
+            {% else %}
+            <td>Advogado</td>
+            {% endif %} {% if order.payment_status == "Pending" %}
+            <td>Pendente</td>
+            {% else %}
+            <td>Pago</td>
+            {% endif %}
+            <td><a class="btn btn-sm btn-warning" href="">Update</a></td>
+            <td><a class="btn btn-sm btn-danger" href="">Cancel</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

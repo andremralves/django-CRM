@@ -7,22 +7,51 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0001_initial'),
+        ("accounts", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Product',
-            new_name='Service',
+            old_name="Product",
+            new_name="Service",
         ),
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('payment_status', models.CharField(choices=[('Pending', 'Pending'), ('Done', 'Done')], max_length=200, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True, null=True)),
-                ('customer_id', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='accounts.customer')),
-                ('service_id', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='accounts.service')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "payment_status",
+                    models.CharField(
+                        choices=[("Pending", "Pending"), ("Done", "Done")],
+                        max_length=200,
+                        null=True,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True, null=True)),
+                (
+                    "customer_id",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="accounts.customer",
+                    ),
+                ),
+                (
+                    "service_id",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="accounts.service",
+                    ),
+                ),
             ],
         ),
     ]

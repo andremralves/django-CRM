@@ -15,10 +15,7 @@ class Customer(models.Model):
 
 
 class Service(models.Model):
-    CATEGORY = (
-        ('Lawyer', 'Lawyer'),
-        ('Doctor', 'Doctor')
-    )
+    CATEGORY = (("Lawyer", "Lawyer"), ("Doctor", "Doctor"))
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField(null=True)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
@@ -31,13 +28,10 @@ class Service(models.Model):
 
 class Order(models.Model):
     PAYMENT_STATUS = (
-        ('Pending', 'Pending'),
-        ('Done', 'Done'),
+        ("Pending", "Pending"),
+        ("Done", "Done"),
     )
-    customer_id = models.ForeignKey(
-        Customer, on_delete=models.SET_NULL, null=True)
-    service_id = models.ForeignKey(
-        Service, on_delete=models.SET_NULL, null=True)
-    payment_status = models.CharField(
-        max_length=200, null=True, choices=PAYMENT_STATUS)
+    customer_id = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    service_id = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True)
+    payment_status = models.CharField(max_length=200, null=True, choices=PAYMENT_STATUS)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)

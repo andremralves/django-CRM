@@ -18,7 +18,7 @@
     <style>
       html,
       body {
-        background-color: rgba(12, 17, 20, 0.74);
+        background-color: rgba(54, 89, 110, 0.74);
       }
       .login-card {
         position: absolute;
@@ -32,8 +32,8 @@
         display: flex;
         justify-content: center;
         flex-flow: column;
-        border-width: 0 8px 8px 0;
-        border-style: solid;
+        border-radius: 10px;
+        box-shadow: 5px 8px 10px black;
       }
     </style>
   </head>
@@ -41,6 +41,7 @@
     <div class="login-card">
       <h1>Login</h1>
       <hr />
+      {% for message in messages %} {{ message }} {% endfor %}
       <form method="POST">
         {% csrf_token %}
         <div class="mb-3">

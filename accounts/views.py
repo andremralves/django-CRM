@@ -10,19 +10,6 @@ from django.contrib.auth import authenticate, login
 # Generic views
 from django.views.generic import CreateView
 
-# Create your views here.
-
-# Extends the Generic View
-class LoginView(CreateView):
-    template_name = "registration/login.html"
-
-    def post(self, request):
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-
 
 @login_required(login_url="login")
 def dashboard(request):

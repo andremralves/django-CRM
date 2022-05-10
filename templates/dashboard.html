@@ -81,7 +81,7 @@
 
   <div class="col col-md-7">
     <hr />
-    <h4>PRÓXIMAS CONSULTAS:</h4>
+    <h4>PRÓXIMAS CONSULTAS</h4>
     <div class="card card-body">
       <div class="d-grid gap-2 d-md-flex justify-content-end">
         <a class="btn btn-outline-primary btn-sm" href="/cliente/create"
@@ -94,17 +94,17 @@
       <table class="table table-sm">
         <thead>
           <tr>
+            <th></th>
             <th>Cliente</th>
             <th>Serviço</th>
             <th>Categoria</th>
             <th>Status</th>
-            <th>Update</th>
-            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
           {% for order in orders %}
           <tr>
+            <td><a class="btn btn-sm btn-info" href="">Detalhes</a></td>
             <td>{{ order.customer_id }}</td>
             <td>{{ order.service_id }}</td>
             {% if order.service_id.category == "Doctor" %}
@@ -112,12 +112,14 @@
             {% else %}
             <td>Advogado</td>
             {% endif %} {% if order.payment_status == "Pending" %}
-            <td>Pendente</td>
+            <td>
+              <span class="badge rounded-pill bg-danger">Pendente</span>
+            </td>
             {% else %}
-            <td>Pago</td>
+            <td>
+              <span class="badge rounded-pill bg-success">Pago</span>
+            </td>
             {% endif %}
-            <td><a class="btn btn-sm btn-warning" href="">Atualizar</a></td>
-            <td><a class="btn btn-sm btn-danger" href="">Cancelar</a></td>
           </tr>
           {% endfor %}
         </tbody>

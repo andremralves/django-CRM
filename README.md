@@ -1,5 +1,7 @@
 # Django Customer Relationship Management
 
+![image](https://user-images.githubusercontent.com/71379045/168422458-98dbd26d-f6be-4db5-b9ae-fb1d3279592c.png)
+
 This is my first Django project, so i'll write a guide with some important steps and commands for Django development
 
 ## Virtual Environments

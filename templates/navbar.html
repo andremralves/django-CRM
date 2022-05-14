@@ -35,7 +35,10 @@
             aria-expanded="false"
             >Olá, André</a
           >
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
             <li>
               <a class="dropdown-item" href="{% url 'logout' %}?next=/login"
                 >Sair</a

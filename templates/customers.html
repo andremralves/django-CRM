@@ -1,0 +1,55 @@
+{% extends "main_template.html" %} {% block content %}
+
+<h4 class="mt-3">TODOS OS CLIENTES</h4>
+<hr />
+<div class="card">
+  <div class="card-body">
+    <form class="d-flex" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Pesquisar por nome"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+    </form>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Whatsapp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>
+            <a href="/cliente/{{ customer.id }}" class="btn btn-sm btn-info"
+              >Detalhes</a
+            >
+          </td>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.phone }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+  const table_rows = document.getElementsByTagName("table")[0].rows;
+  const term = "Andr";
+
+  for (let i = 1; i < table_rows.length; i++) {
+    const cells = table_rows[i].cells;
+    for (let j = 1; j < cells.length; j++) {
+      const cell = cells[j];
+      if (cell.innerHTML.search(term) >= 0) {
+        table_rows[i].style.display = "none";
+      }
+    }
+  }
+</script>
+
+{% endblock %}

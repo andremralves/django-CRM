@@ -1,11 +1,21 @@
+/* Dashboard cards row */
 #total-orders {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
 
 #appointments-doctor {
-    background-color: paleturquoise;
+  background-color: paleturquoise;
 }
 
 #appointments-lawyer {
-    background-color: cadetblue;
+  background-color: cadetblue;
+}
+
+#logo {
+  width: 100px;
+  height: auto;
+}
+/* Navbar */
+.navbar {
+  font-size: 1.15rem;
 }

@@ -7,4 +7,5 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("cliente/<int:pk>", views.customer, name="customer"),
     path("cliente/create", views.customer_create, name="customer_create"),
+    path("clientes", views.customers, name="customers"),
 ]

@@ -14,6 +14,12 @@ def customer(request, pk):
     return render(request, "customer.html", context)
 
 
+def customers(request):
+    customers = Customer.objects.all()
+    context = {"customers": customers}
+    return render(request, "customers.html", context)
+
+
 @login_required(login_url="login")
 def customer_create(request):
     print(request)
